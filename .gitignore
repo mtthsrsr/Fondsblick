@@ -1,0 +1,9 @@
+node_modules/
+out/
+dist/
+tests/.*
+.DS_Store
+.env*
+*.log
+portfolio.json
+*private*

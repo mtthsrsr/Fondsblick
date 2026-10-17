@@ -1,0 +1,70 @@
+{
+  "name": "fondsblick",
+  "productName": "Fondsblick",
+  "version": "1.3.2",
+  "private": true,
+  "description": "Fonds und ETFs nach L\u00e4ndern und Einzelanlagen verstehen",
+  "main": "out/main/index.js",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node tests/run.mjs && node tests/providers.mjs && node tests/links.mjs",
+    "typecheck": "tsc --noEmit",
+    "start": "npm run build && electron .",
+    "dist": "npm run build && electron-builder --publish never"
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.13.0",
+    "lucide-react": "^0.451.0",
+    "xlsx": "file:vendor/xlsx-0.20.3.tgz"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.5",
+    "typescript": "^5.6.3",
+    "electron": "43.8.0",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "electron-builder": "26.15.3"
+  },
+  "license": "MIT",
+  "author": "mtthsrsr",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mtthsrsr/Fondsblick.git"
+  },
+  "build": {
+    "appId": "com.fondsblick.desktop",
+    "productName": "Fondsblick",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "npmRebuild": false,
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "identity": "-",
+      "hardenedRuntime": false,
+      "category": "public.app-category.finance"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "publish": null
+  }
+}
